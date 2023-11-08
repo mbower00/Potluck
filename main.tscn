@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbhgw6uopl8b5"]
+
+[ext_resource type="PackedScene" uid="uid://7i0y85o0n8ek" path="res://player.tscn" id="1_e8unv"]
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_e8unv")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7.16339, 7.11439)
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.53618, -0.567961, 0.624444, -1.7458e-08, 0.739772, 0.672858, -0.844104, -0.360773, 0.396651, 5.90655, 9.82139, 4.19911)
