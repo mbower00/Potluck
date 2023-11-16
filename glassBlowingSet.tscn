@@ -142,6 +142,33 @@ albedo_texture = ExtResource("1_hxmtd")
 height = 3.1347
 radius = 2.14979
 
+[sub_resource type="Animation" id="Animation_vfwee"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InnerFlame:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OuterFlame:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_y37ct"]
 resource_name = "inner_flame_spin"
 length = 1.25
@@ -171,33 +198,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 6.28319, 0), Vector3(0, 4.71239, 0), Vector3(0, 3.14159, 0), Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_vfwee"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InnerFlame:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OuterFlame:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xvv8h"]
 _data = {
 "RESET": SubResource("Animation_vfwee"),
@@ -219,7 +219,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_2qfru")
 
 [node name="InnerFlame" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.33923, 1.04622, -0.899999)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, -1.33923, 1.04622, -0.899999)
 mesh = SubResource("ArrayMesh_norja")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_halfc")

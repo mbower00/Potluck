@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://7i0y85o0n8ek"]
+[gd_scene load_steps=4 format=3 uid="uid://7i0y85o0n8ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_r02ju"]
+[ext_resource type="PackedScene" uid="uid://cqvoydoc4t2jl" path="res://buttonIndicator.tscn" id="2_5h37o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g8tj7"]
 
@@ -12,3 +13,6 @@ script = ExtResource("1_r02ju")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.49958, 0)
 shape = SubResource("CapsuleShape3D_g8tj7")
+
+[node name="ButtonIndicator" parent="." instance=ExtResource("2_5h37o")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 5, 0)

@@ -307,10 +307,12 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 0.333379, 0.942793, 0, -0.942793, 0.333379, 0, 18.5391, 8.46953)
 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.990634, -0.136546, 0, 0.136546, 0.990634, 0, -1.75489, -4.45063)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.53618, -0.567961, 0.624444, -1.7458e-08, 0.739772, 0.672858, -0.844104, -0.360773, 0.396651, 5.90655, 9.82139, 4.19911)
+light_color = Color(1, 1, 0.882353, 1)
 
 [node name="Player_0" parent="." instance=ExtResource("1_e8unv")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, -4)

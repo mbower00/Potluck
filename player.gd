@@ -8,6 +8,15 @@ func _physics_process(_delta):
 	var direction = Vector3.ZERO
 	var new_velocity = Vector3.ZERO
 	
+	if Input.is_action_pressed("a_%s" % joypad_num):
+		$ButtonIndicator.show_button('a')
+	if Input.is_action_pressed("b_%s" % joypad_num):
+		$ButtonIndicator.show_button('b')
+	if Input.is_action_pressed("x_%s" % joypad_num):
+		$ButtonIndicator.show_button('x')
+	if Input.is_action_pressed("y_%s" % joypad_num):
+		$ButtonIndicator.show_button('y')
+	
 	if Input.is_action_pressed("move_north_%s" % joypad_num):
 		direction.z -= Input.get_action_strength("move_north_%s" % joypad_num)
 	if Input.is_action_pressed("move_south_%s" % joypad_num):
