@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0ujjeomv2rvr"
-path="res://.godot/imported/potluck.glb-73ab2778d6bafdca7b9aadd10729640a.scn"
+uid="uid://bukw13qjk0bib"
+path="res://.godot/imported/potluck.glb-617f86704209086ddc96e252f2d506da.scn"
 
 [deps]
 
-source_file="res://potluck.glb"
-dest_files=["res://.godot/imported/potluck.glb-73ab2778d6bafdca7b9aadd10729640a.scn"]
+source_file="res://art/potluck.glb"
+dest_files=["res://.godot/imported/potluck.glb-617f86704209086ddc96e252f2d506da.scn"]
 
 [params]
 
