@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://7i0y85o0n8ek"]
+[gd_scene load_steps=5 format=3 uid="uid://7i0y85o0n8ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_r02ju"]
 [ext_resource type="PackedScene" uid="uid://cqvoydoc4t2jl" path="res://buttonIndicator.tscn" id="2_5h37o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g8tj7"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o4oon"]
+radius = 1.49616
+
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 3
 script = ExtResource("1_r02ju")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -16,3 +20,13 @@ shape = SubResource("CapsuleShape3D_g8tj7")
 
 [node name="ButtonIndicator" parent="." instance=ExtResource("2_5h37o")]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 5, 0)
+
+[node name="Detector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00092, 0)
+shape = SubResource("CylinderShape3D_o4oon")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

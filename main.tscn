@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bbhgw6uopl8b5"]
+[gd_scene load_steps=43 format=3 uid="uid://bbhgw6uopl8b5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4po1j"]
 [ext_resource type="PackedScene" uid="uid://7i0y85o0n8ek" path="res://player.tscn" id="1_e8unv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkefjnhl5gei6" path="res://cauldron.tscn" id="4_37g15"]
 [ext_resource type="PackedScene" uid="uid://bnc240f1q1ldy" path="res://table.tscn" id="5_fp7xk"]
 [ext_resource type="PackedScene" uid="uid://cbvkywtg5u5nq" path="res://glassBlowingSet.tscn" id="6_aa4pg"]
+[ext_resource type="PackedScene" uid="uid://5eu3bouegd6o" path="res://potion.tscn" id="7_s5w78"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iqlu"]
 albedo_color = Color(0.211765, 0.356863, 0.0745098, 1)
@@ -291,6 +292,8 @@ albedo_texture = ExtResource("3_40d6d")
 script = ExtResource("1_4po1j")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
@@ -384,3 +387,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76013, 0, 0)
 
 [node name="GlassBlowingSet" parent="." instance=ExtResource("6_aa4pg")]
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -5.81802, 0, 0)
+
+[node name="Potion" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117397, 3.12423, 4.22256)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://cbvkywtg5u5nq"]
+[gd_scene load_steps=23 format=3 uid="uid://cbvkywtg5u5nq"]
 
 [ext_resource type="Texture2D" uid="uid://mi2r3jp2rt52" path="res://art/asprite_palette.png" id="1_hxmtd"]
+[ext_resource type="Script" path="res://glassBlowingSet.gd" id="1_ukam4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhe18"]
 
@@ -205,6 +206,9 @@ _data = {
 }
 
 [node name="GlassBlowingSet" type="StaticBody3D"]
+collision_layer = 10
+collision_mask = 15
+script = ExtResource("1_ukam4")
 
 [node name="GlassBlowingSetMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000922799, 0)

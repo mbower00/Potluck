@@ -72,6 +72,8 @@ shadow_mesh = SubResource("ArrayMesh_rh767")
 radius = 1.29129
 
 [node name="Cauldron" type="StaticBody3D"]
+collision_layer = 10
+collision_mask = 15
 script = ExtResource("1_hqso0")
 
 [node name="CauldronMesh" type="MeshInstance3D" parent="."]

@@ -1,10 +1,5 @@
-extends Node3D
+extends StaticBody3D
 
-# [EMPTY] cauldron_liquid pos y: -1.1
-# [FULL] cauldron_liquid pos y: 0
-
-func interact():
-	print('hello from cauldron!!')
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,4 +11,4 @@ func _process(delta):
 	pass
 
 func on_player_detected():
-	return 'b'
+	return 'x'
