@@ -1,4 +1,4 @@
-extends Node3D
+extends 'interactable_static.gd'
 
 # [EMPTY] cauldron_liquid pos y: -1.1
 # [FULL] cauldron_liquid pos y: 0

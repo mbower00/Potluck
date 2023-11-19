@@ -4,18 +4,30 @@ extends CharacterBody3D
 
 @export var joypad_num = 0
 
+var occupied_object = null
+var focused_object = null
+
 func _physics_process(_delta):
 	var direction = Vector3.ZERO
 	var new_velocity = Vector3.ZERO
 	
-	if Input.is_action_pressed("a_%s" % joypad_num):
-		$ButtonIndicator.show_button('a')
-	if Input.is_action_pressed("b_%s" % joypad_num):
-		$ButtonIndicator.show_button('b')
-	if Input.is_action_pressed("x_%s" % joypad_num):
-		$ButtonIndicator.show_button('x')
-	if Input.is_action_pressed("y_%s" % joypad_num):
-		$ButtonIndicator.show_button('y')
+	if Input.is_action_just_pressed("a_%s" % joypad_num):
+		# Occupy the interactable
+		if focused_object != null:
+			focused_object.occupy()
+			occupied_object = focused_object
+			focused_object = null
+
+	if Input.is_action_just_pressed("b_%s" % joypad_num):
+		print('OCCUPIED ', occupied_object)
+		print('FOCUS ', focused_object, '\n')
+
+	if Input.is_action_just_pressed("x_%s" % joypad_num):
+		pass
+
+	if Input.is_action_just_pressed("y_%s" % joypad_num):
+		pass
+
 	
 	if Input.is_action_pressed("move_north_%s" % joypad_num):
 		direction.z -= Input.get_action_strength("move_north_%s" % joypad_num)
@@ -34,5 +46,16 @@ func _physics_process(_delta):
 
 
 func _on_detector_body_entered(body):
-	var response = body.on_player_detected()
-	$ButtonIndicator.show_button(response)
+	if !body.is_occupied:
+		$ButtonIndicator.show_button('a')
+		focused_object = body
+
+
+func _on_detector_body_exited(body):
+	if body == occupied_object:
+		occupied_object = null
+		body.unoccupy()
+		$ButtonIndicator.hide_buttons()
+	if body == focused_object:
+		focused_object = null
+		$ButtonIndicator.hide_buttons()
