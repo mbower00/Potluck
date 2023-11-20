@@ -76,6 +76,33 @@ shadow_mesh = SubResource("ArrayMesh_sxt6f")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqim6"]
 albedo_texture = ExtResource("1_fbm6m")
 
+[sub_resource type="Animation" id="Animation_knw0j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KnifeMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.219185, 1.89561, -0.478925)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KnifeMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.851165, 0.963488, 1.61398)]
+}
+
 [sub_resource type="Animation" id="Animation_kujpn"]
 resource_name = "chopping_knife"
 length = 2.5
@@ -105,33 +132,6 @@ tracks/1/keys = {
 "values": [Vector3(0.851165, 0.963488, 1.61398), Vector3(1.13153, -0.485534, -0.00307313), Vector3(1.27514, -3.01015, -2.93744), Vector3(1.50904, -2.47441, -2.39699), Vector3(1.26759, -0.440702, -0.529426), Vector3(1.41721, 3.19395, 2.97579), Vector3(1.52135, 2.96185, 2.74141), Vector3(1.26395, -0.0552842, -0.327174), Vector3(1.35559, -2.21322, -2.59279), Vector3(1.30812, -1.25331, -1.67863)]
 }
 
-[sub_resource type="Animation" id="Animation_knw0j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("KnifeMesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.219185, 1.89561, -0.478925)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("KnifeMesh:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.851165, 0.963488, 1.61398)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tujc0"]
 _data = {
 "RESET": SubResource("Animation_knw0j"),
@@ -154,12 +154,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0292459, 0.899712, 0)
 shape = SubResource("BoxShape3D_ysvq8")
 
 [node name="KnifeMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.592359, -0.596791, 0.54125, 0.658493, -0.0284571, -0.752049, 0.464218, 0.801892, 0.376125, -0.219185, 1.89561, -0.478925)
+transform = Transform3D(0.592362, -0.596788, 0.54125, 0.658493, -0.0284539, -0.752048, 0.464214, 0.801894, 0.376126, -0.219185, 1.89561, -0.478925)
 mesh = SubResource("ArrayMesh_smi4q")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_mqim6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "chopping_knife"
 libraries = {
 "": SubResource("AnimationLibrary_tujc0")
 }
