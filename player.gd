@@ -14,16 +14,22 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("a_%s" % joypad_num):
 		# Occupy the interactable
 		if focused_object != null:
-			focused_object.occupy()
+			if focused_object.is_item:
+				focused_object.occupy($Hand)
+			else:
+				focused_object.occupy()
 			occupied_object = focused_object
 			focused_object = null
 
 	if Input.is_action_just_pressed("b_%s" % joypad_num):
-		print('OCCUPIED ', occupied_object)
-		print('FOCUS ', focused_object, '\n')
+		# Unoccupy the interactable
+		if occupied_object != null and occupied_object.is_item:
+			occupied_object.unoccupy()
+			occupied_object = null
 
 	if Input.is_action_just_pressed("x_%s" % joypad_num):
-		pass
+		print('OCCUPIED ', occupied_object)
+		print('FOCUS ', focused_object, '\n')
 
 	if Input.is_action_just_pressed("y_%s" % joypad_num):
 		pass
