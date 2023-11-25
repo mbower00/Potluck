@@ -1,5 +1,4 @@
 extends 'interactable_item.gd'
-
 var type = "empty"
 
 func change_type(new_type):
@@ -13,6 +12,7 @@ func change_type(new_type):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	item_type = "bottle"
 	# Hide all types
 	for i in $CollisionShape3D/Types.get_children():
 		i.hide()

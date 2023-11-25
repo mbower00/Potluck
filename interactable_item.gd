@@ -17,5 +17,4 @@ func unoccupy():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if hand != null:
-		print(hand)
 		global_position = hand.global_position

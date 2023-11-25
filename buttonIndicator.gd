@@ -12,31 +12,31 @@ func show_button(btn):
 	button_shown = true
 	match btn:
 		'a':
-			$A.show()
+			$Buttons/A.show()
 		'b':
-			$B.show()
+			$Buttons/B.show()
 		'x':
-			$X.show()
+			$Buttons/X.show()
 		'y':
-			$Y.show()
+			$Buttons/Y.show()
 		_:
 			print("Please pass in 'a' 'b' 'x' or 'y'")
 			button_shown = false
+	$AnimationPlayer.play("wiggle")
 
 """
 Hides all the button meshs.
 """
 func hide_buttons():
 	button_shown = false
-	$A.hide()
-	$B.hide()
-	$X.hide()
-	$Y.hide()
+	$Buttons/A.hide()
+	$Buttons/B.hide()
+	$Buttons/X.hide()
+	$Buttons/Y.hide()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_buttons()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

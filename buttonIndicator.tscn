@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqvoydoc4t2jl"]
+[gd_scene load_steps=22 format=3 uid="uid://cqvoydoc4t2jl"]
 
 [ext_resource type="Script" path="res://buttonIndicator.gd" id="1_ukq0m"]
 [ext_resource type="Texture2D" uid="uid://mi2r3jp2rt52" path="res://art/asprite_palette.png" id="1_wqb3r"]
@@ -143,29 +143,73 @@ shadow_mesh = SubResource("ArrayMesh_7pyrc")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvw2y"]
 albedo_texture = ExtResource("1_wqb3r")
 
+[sub_resource type="Animation" id="Animation_s5kok"]
+resource_name = "wiggle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.174533), Vector3(0, 0, 0.174533), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tkg4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_svbpb"]
+_data = {
+"RESET": SubResource("Animation_tkg4t"),
+"wiggle": SubResource("Animation_s5kok")
+}
+
 [node name="ButtonIndicator" type="Node3D"]
 script = ExtResource("1_ukq0m")
 
-[node name="X" type="MeshInstance3D" parent="."]
+[node name="Buttons" type="Node3D" parent="."]
+
+[node name="X" type="MeshInstance3D" parent="Buttons"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000922799, 0)
 mesh = SubResource("ArrayMesh_t332t")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_igsnj")
 
-[node name="Y" type="MeshInstance3D" parent="."]
+[node name="Y" type="MeshInstance3D" parent="Buttons"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000922799, 0)
 mesh = SubResource("ArrayMesh_4n17g")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_vrjec")
 
-[node name="A" type="MeshInstance3D" parent="."]
+[node name="A" type="MeshInstance3D" parent="Buttons"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000922799, 0)
 mesh = SubResource("ArrayMesh_egifw")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_g5085")
 
-[node name="B" type="MeshInstance3D" parent="."]
+[node name="B" type="MeshInstance3D" parent="Buttons"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.000922799, 0)
 mesh = SubResource("ArrayMesh_85o8n")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_xvw2y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_svbpb")
+}

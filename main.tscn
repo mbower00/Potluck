@@ -290,6 +290,7 @@ albedo_texture = ExtResource("3_40d6d")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_4po1j")
+potion_scene = ExtResource("7_s5w78")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_layer = 2
@@ -307,13 +308,12 @@ shape = SubResource("BoxShape3D_h358u")
 metadata/_edit_group_ = true
 
 [node name="CameraPivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 22.3353, 8.46953)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 26.0361, 25.6607)
 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.2406, -10.2406)
 projection = 1
 current = true
-size = 19.0
+size = 30.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.53618, -0.567961, 0.624444, -1.7458e-08, 0.739772, 0.672858, -0.844104, -0.360773, 0.396651, 5.90655, 9.82139, 4.19911)
@@ -392,3 +392,8 @@ transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -5
 
 [node name="Potion" parent="." instance=ExtResource("7_s5w78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117397, 3.12423, 4.22256)
+
+[connection signal="bottle_crafted" from="Player_0" to="." method="_on_player_0_bottle_crafted"]
+[connection signal="bottle_crafted" from="Player_1" to="." method="_on_player_1_bottle_crafted"]
+[connection signal="bottle_crafted" from="Player_2" to="." method="_on_player_2_bottle_crafted"]
+[connection signal="bottle_crafted" from="Player_3" to="." method="_on_player_3_bottle_crafted"]
