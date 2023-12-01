@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00092, 0)
 shape = SubResource("CylinderShape3D_o4oon")
 
 [node name="Hand" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66592, -1.46803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12831, -1.46803)
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

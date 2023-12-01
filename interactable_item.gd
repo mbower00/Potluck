@@ -17,4 +17,12 @@ func unoccupy():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if hand != null:
-		global_position = hand.global_position
+		look_at_from_position(
+			hand.global_position, # from pos
+			Vector3( # look at
+				hand.get_parent().global_position.x, # x
+				position.y, # y
+				hand.get_parent().global_position.z # z
+			)
+		)
+		#global_position = hand.global_position

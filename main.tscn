@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bbhgw6uopl8b5"]
+[gd_scene load_steps=44 format=3 uid="uid://bbhgw6uopl8b5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4po1j"]
 [ext_resource type="PackedScene" uid="uid://7i0y85o0n8ek" path="res://player.tscn" id="1_e8unv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnc240f1q1ldy" path="res://table.tscn" id="5_fp7xk"]
 [ext_resource type="PackedScene" uid="uid://cbvkywtg5u5nq" path="res://glassBlowingSet.tscn" id="6_aa4pg"]
 [ext_resource type="PackedScene" uid="uid://5eu3bouegd6o" path="res://potion.tscn" id="7_s5w78"]
+[ext_resource type="PackedScene" uid="uid://xh07p0gkoe46" path="res://ingredient.tscn" id="8_ah0ek"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iqlu"]
 albedo_color = Color(0.211765, 0.356863, 0.0745098, 1)
@@ -392,6 +393,10 @@ transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -5
 
 [node name="Potion" parent="." instance=ExtResource("7_s5w78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117397, 3.12423, 4.22256)
+
+[node name="Ingredient" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.67268, 2.46408, 0)
+color = "yellow"
 
 [connection signal="bottle_crafted" from="Player_0" to="." method="_on_player_0_bottle_crafted"]
 [connection signal="bottle_crafted" from="Player_1" to="." method="_on_player_1_bottle_crafted"]

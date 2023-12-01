@@ -2,6 +2,7 @@ extends Node
 
 @export var potion_scene: PackedScene
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var joypads = Input.get_connected_joypads()
