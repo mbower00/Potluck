@@ -370,6 +370,7 @@ libraries = {
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39943, 2.9035, -0.853088)
 light_color = Color(1, 0.666667, 0, 1)
+light_energy = 3.909
 omni_range = 5.80652
 metadata/_edit_group_ = true
 

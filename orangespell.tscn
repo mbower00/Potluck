@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://gor3jgs3b62r"]
+
+[ext_resource type="PackedScene" uid="uid://d1psaakdqxgjq" path="res://art/orangespell.glb" id="1_j3xc4"]
+
+[node name="orangespell" instance=ExtResource("1_j3xc4")]

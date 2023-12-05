@@ -299,11 +299,23 @@ mesh = SubResource("ArrayMesh_mx0rq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hu3i6")
 
+[node name="YellowLight" type="OmniLight3D" parent="CollisionShape3D/Types/yellow"]
+transform = Transform3D(1.78253, 0, 0, 0, 1.78253, 0, 0, 0, 1.78253, 0, 0, 0)
+light_color = Color(0.972549, 0.890196, 0.145098, 1)
+light_energy = 2.31
+omni_range = 4.27238
+
 [node name="blue" type="MeshInstance3D" parent="CollisionShape3D/Types"]
 transform = Transform3D(0.00126214, 0.329998, 0, -0.329998, 0.00126214, 0, 0, 0, 0.33, 0, 0, 0)
 mesh = SubResource("ArrayMesh_tydbe")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_xok3h")
+
+[node name="BlueLight" type="OmniLight3D" parent="CollisionShape3D/Types/blue"]
+transform = Transform3D(1.78253, 0, 0, 0, 1.78253, 0, 0, 0, 1.78253, 0, 0, 0)
+light_color = Color(0.0117647, 0.196078, 0.635294, 1)
+light_energy = 6.801
+omni_range = 4.27238
 
 [node name="purple" type="MeshInstance3D" parent="CollisionShape3D/Types"]
 transform = Transform3D(0.00126214, 0.329998, 0, -0.329998, 0.00126214, 0, 0, 0, 0.33, 0, 0, 0)
@@ -311,17 +323,35 @@ mesh = SubResource("ArrayMesh_vplrk")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_sk3ud")
 
+[node name="PurpleLight" type="OmniLight3D" parent="CollisionShape3D/Types/purple"]
+transform = Transform3D(1.78253, 0, 0, 0, 1.78253, 0, 0, 0, 1.78253, 0, 0, 0)
+light_color = Color(0.678431, 0.027451, 0.741176, 1)
+light_energy = 4.836
+omni_range = 4.27238
+
 [node name="green" type="MeshInstance3D" parent="CollisionShape3D/Types"]
 transform = Transform3D(0.00126214, 0.329998, 0, -0.329998, 0.00126214, 0, 0, 0, 0.33, 0, 0, 0)
 mesh = SubResource("ArrayMesh_jopoe")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_6khjo")
 
+[node name="GreenLight" type="OmniLight3D" parent="CollisionShape3D/Types/green"]
+transform = Transform3D(1.78253, 0, 0, 0, 1.78253, 0, 0, 0, 1.78253, 0, 0, 0)
+light_color = Color(0.207843, 0.905882, 0.113725, 1)
+light_energy = 2.31
+omni_range = 4.27238
+
 [node name="red" type="MeshInstance3D" parent="CollisionShape3D/Types"]
 transform = Transform3D(0.00126214, 0.329998, 0, -0.329998, 0.00126214, 0, 0, 0, 0.33, 0, 0, 0)
 mesh = SubResource("ArrayMesh_omxns")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_h75y7")
+
+[node name="RedLight" type="OmniLight3D" parent="CollisionShape3D/Types/red"]
+transform = Transform3D(1.78253, 0, 0, 0, 1.78253, 0, 0, 0, 1.78253, 0, 0, 0)
+light_color = Color(0.894118, 0.101961, 0.0352941, 1)
+light_energy = 7.83
+omni_range = 4.27238
 
 [node name="empty" type="MeshInstance3D" parent="CollisionShape3D/Types"]
 transform = Transform3D(0.00126214, 0.329998, 0, -0.329998, 0.00126214, 0, 0, 0, 0.33, 0, 0, 0)
@@ -334,3 +364,9 @@ transform = Transform3D(0.00126214, 0.329998, 0, -0.329998, 0.00126214, 0, 0, 0,
 mesh = SubResource("ArrayMesh_i55fa")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_wditd")
+
+[node name="OrangeLight" type="OmniLight3D" parent="CollisionShape3D/Types/orange"]
+transform = Transform3D(1.78253, 0, 0, 0, 1.78253, 0, 0, 0, 1.78253, 0, 0, 0)
+light_color = Color(0.992157, 0.627451, 0, 1)
+light_energy = 4.836
+omni_range = 4.27238

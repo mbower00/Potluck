@@ -29,22 +29,30 @@ func on_player_detected():
 	
 func before_occupy():
 	set_level('stir')
+	
+func before_unoccupy():
+	set_level('empty')
 
 func set_level(level):
 	match level:
 		'stir':
+			switch_light(true)
 			item_type = "stir_cauldron"
 			$CauldronMesh/Liquids.position = Vector3(0, STIR_LIQUIDS, 0)
 		'full':
+			switch_light(true)
 			item_type = "full_cauldron"
 			$CauldronMesh/Liquids.position = Vector3(0, FULL_LIQUIDS, 0)
 		'half':
+			switch_light(true)
 			item_type = "half_cauldron"
 			$CauldronMesh/Liquids.position = Vector3(0, HALF_lIQUIDS, 0)
 		'empty':
+			switch_light(false)
 			item_type = "empty_cauldron"
 			$CauldronMesh/Liquids.position = Vector3(0, EMPTY_lIQUIDS, 0)
 		_:
+			switch_light(false)
 			item_type = "empty_cauldron"
 			$CauldronMesh/Liquids.position = Vector3(0, EMPTY_lIQUIDS, 0)
 			
@@ -56,4 +64,10 @@ var liquid_type = "blue"
 func change_type(new_liquid_type):
 	get_node("CauldronMesh/Liquids/%s" % liquid_type).hide()
 	get_node("CauldronMesh/Liquids/%s" % new_liquid_type).show()
-	liquid_type = new_liquid_type	
+	liquid_type = new_liquid_type
+	
+func switch_light(is_on):
+	if is_on:
+		get_node("CauldronMesh/Liquids/%s/light" % liquid_type).show()
+	else:
+		get_node("CauldronMesh/Liquids/%s/light" % liquid_type).hide()

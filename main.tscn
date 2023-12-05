@@ -1,11 +1,14 @@
-[gd_scene load_steps=44 format=3 uid="uid://bbhgw6uopl8b5"]
+[gd_scene load_steps=47 format=3 uid="uid://bbhgw6uopl8b5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4po1j"]
 [ext_resource type="PackedScene" uid="uid://7i0y85o0n8ek" path="res://player.tscn" id="1_e8unv"]
 [ext_resource type="Texture2D" uid="uid://mi2r3jp2rt52" path="res://art/asprite_palette.png" id="3_40d6d"]
 [ext_resource type="PackedScene" uid="uid://bkefjnhl5gei6" path="res://cauldron.tscn" id="4_37g15"]
+[ext_resource type="PackedScene" uid="uid://d3ejwq37umv8m" path="res://buff_spell.tscn" id="4_w0sj7"]
 [ext_resource type="PackedScene" uid="uid://bnc240f1q1ldy" path="res://table.tscn" id="5_fp7xk"]
+[ext_resource type="PackedScene" uid="uid://bpvexld3gow0i" path="res://orange_spell.tscn" id="5_pm4p1"]
 [ext_resource type="PackedScene" uid="uid://cbvkywtg5u5nq" path="res://glassBlowingSet.tscn" id="6_aa4pg"]
+[ext_resource type="PackedScene" uid="uid://dt0f52ypeous7" path="res://yellow_spell.tscn" id="7_c4rjt"]
 [ext_resource type="PackedScene" uid="uid://5eu3bouegd6o" path="res://potion.tscn" id="7_s5w78"]
 [ext_resource type="PackedScene" uid="uid://xh07p0gkoe46" path="res://ingredient.tscn" id="8_ah0ek"]
 
@@ -292,6 +295,9 @@ albedo_texture = ExtResource("3_40d6d")
 [node name="Main" type="Node"]
 script = ExtResource("1_4po1j")
 potion_scene = ExtResource("7_s5w78")
+orange_spell_scene = ExtResource("5_pm4p1")
+yellow_spell_scene = ExtResource("7_c4rjt")
+buff_spell_scene = ExtResource("4_w0sj7")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_layer = 2
@@ -391,14 +397,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76013, 0, 0)
 [node name="GlassBlowingSet" parent="." instance=ExtResource("6_aa4pg")]
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -5.81802, 0, 0)
 
+[node name="Ingredient" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58765, 2.46408, 0)
+
+[node name="Ingredient2" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2679, 2.46408, 2.60206)
+color = "blue"
+
+[node name="Ingredient3" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6998, 2.46408, 0)
+color = "yellow"
+
+[node name="Ingredient4" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1985, 2.46408, 0)
+color = "orange"
+
+[node name="Ingredient5" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.67268, 2.46408, 2.77307)
+color = "green"
+
+[node name="Ingredient6" parent="." instance=ExtResource("8_ah0ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9441, 2.46408, 2.83915)
+color = "purple"
+
 [node name="Potion" parent="." instance=ExtResource("7_s5w78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117397, 3.12423, 4.22256)
 
-[node name="Ingredient" parent="." instance=ExtResource("8_ah0ek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.67268, 2.46408, 0)
-color = "yellow"
+[node name="Potion2" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117397, 3.12423, 8.52476)
+type = "yellow"
+
+[node name="Potion3" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87555, 3.12423, 8.52359)
+type = "orange"
+
+[node name="Potion4" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87198, 3.12423, 8.79773)
+type = "green"
+
+[node name="Potion5" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9174, 3.12423, 4.29639)
+type = "red"
+
+[node name="Potion6" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16726, 3.12423, 13.3336)
+type = "blue"
+
+[node name="Potion7" parent="." instance=ExtResource("7_s5w78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60116, 3.12423, 13.0597)
+type = "purple"
 
 [connection signal="bottle_crafted" from="Player_0" to="." method="_on_player_0_bottle_crafted"]
+[connection signal="potion_used" from="Player_0" to="." method="_on_player_0_potion_used"]
 [connection signal="bottle_crafted" from="Player_1" to="." method="_on_player_1_bottle_crafted"]
+[connection signal="potion_used" from="Player_1" to="." method="_on_player_1_potion_used"]
 [connection signal="bottle_crafted" from="Player_2" to="." method="_on_player_2_bottle_crafted"]
+[connection signal="potion_used" from="Player_2" to="." method="_on_player_2_potion_used"]
 [connection signal="bottle_crafted" from="Player_3" to="." method="_on_player_3_bottle_crafted"]
+[connection signal="potion_used" from="Player_3" to="." method="_on_player_3_potion_used"]

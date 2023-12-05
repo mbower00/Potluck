@@ -1,5 +1,5 @@
 extends 'interactable_item.gd'
-var type = "empty"
+@export var type = "empty"
 
 func change_type(new_type):
 	get_node("CollisionShape3D/Types/%s" % type).hide()
@@ -17,7 +17,7 @@ func _ready():
 	for i in $CollisionShape3D/Types.get_children():
 		i.hide()
 		
-	change_type("empty")
+	change_type(type)
 
 
 func on_player_detected():

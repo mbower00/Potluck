@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7i0y85o0n8ek"]
+[gd_scene load_steps=6 format=3 uid="uid://7i0y85o0n8ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_r02ju"]
 [ext_resource type="PackedScene" uid="uid://cqvoydoc4t2jl" path="res://buttonIndicator.tscn" id="2_5h37o"]
+[ext_resource type="PackedScene" uid="uid://bx848vj44olws" path="res://arrow.tscn" id="3_jlfk1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g8tj7"]
 
@@ -29,6 +30,9 @@ shape = SubResource("CylinderShape3D_o4oon")
 
 [node name="Hand" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12831, -1.46803)
+
+[node name="Arrow" parent="." instance=ExtResource("3_jlfk1")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, -1.9069)
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
