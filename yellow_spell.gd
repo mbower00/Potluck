@@ -1,6 +1,10 @@
 extends Node3D
 var host_player = null
 
+var damage_timer = 0
+var damage_freq = .2
+var damage_amount = 40
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,6 +14,18 @@ func _process(delta):
 	if host_player:
 		var pos = host_player.global_position
 		global_position = pos
+		
+		damage_timer += delta
+		if damage_timer > damage_freq:
+			damage_timer = 0
+			if $Detector.has_overlapping_bodies():
+				handle_hit()
+			
+func handle_hit():
+	var foes = $Detector.get_overlapping_bodies()
+	for foe in foes:
+		if foe != null:
+			foe.damage(damage_amount)
 
 func set_host_player(player):
 	host_player = player

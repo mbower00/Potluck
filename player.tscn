@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7i0y85o0n8ek"]
+[gd_scene load_steps=26 format=3 uid="uid://7i0y85o0n8ek"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_r02ju"]
 [ext_resource type="PackedScene" uid="uid://cqvoydoc4t2jl" path="res://buttonIndicator.tscn" id="2_5h37o"]
@@ -9,9 +9,561 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o4oon"]
 radius = 1.49616
 
+[sub_resource type="Animation" id="Animation_nfve0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00467474, 1.3689, -0.0738576)]
+}
+
+[sub_resource type="Animation" id="Animation_wv8jr"]
+resource_name = "got_hit"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:visibilty")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00467474, 1.3689, -0.0738576)]
+}
+
+[sub_resource type="Animation" id="Animation_gloq3"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0.0436332), Vector3(0, 1.5708, 0.15708)]
+}
+
+[sub_resource type="Animation" id="Animation_8rhig"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(0.168546, -1.5708, -0.0440113), Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(-0.169297, -1.5708, -0.0436332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-0.00467474, 1.3689, -0.0738576), Vector3(-0.00467474, 1.64925, -0.0738576), Vector3(-0.00467474, 1.3689, -0.0738576), Vector3(-0.00467474, 1.64925, -0.0738576)]
+}
+
+[sub_resource type="Animation" id="Animation_85t5g"]
+resource_name = "walk_short"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.194398, 0), Vector3(0, 0, 0), Vector3(0, 0.194398, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(0.168546, -1.5708, -0.0440113), Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(-0.169297, -1.5708, -0.0436332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0652887, 0.3653, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-0.005, 0.88, -0.074), Vector3(-0.005, 1.151, -0.074), Vector3(-0.005, 0.88, -0.074), Vector3(-0.005, 1.151, -0.074)]
+}
+
+[sub_resource type="Animation" id="Animation_hb2o5"]
+resource_name = "walk_tall"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.587, 0), Vector3(0, 0, 0), Vector3(0, 0.587, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0369969, 0.336997, 0.636997, 0.936997),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(0.168546, -1.5708, -0.0440113), Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(-0.169297, -1.5708, -0.0436332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0369969, 0.337325, 0.636997, 0.937981),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-0.005, 1.724, -0.074), Vector3(-0.005, 2.2, -0.074), Vector3(-0.005, 1.724, -0.074), Vector3(-0.005, 2.2, -0.074)]
+}
+
+[sub_resource type="Animation" id="Animation_jinh4"]
+resource_name = "walk_wiz"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0.0698132), Vector3(0.169297, 1.5708, 0.0698132), Vector3(0, 1.5708, 0.0698132), Vector3(-0.169297, 1.5708, 0.0698132)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 1.369, 0), Vector3(0, 1.649, 0), Vector3(0, 1.369, 0), Vector3(0, 1.649, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxu2f"]
+_data = {
+"RESET": SubResource("Animation_nfve0"),
+"got_hit": SubResource("Animation_wv8jr"),
+"idle": SubResource("Animation_gloq3"),
+"walk": SubResource("Animation_8rhig"),
+"walk_short": SubResource("Animation_85t5g"),
+"walk_tall": SubResource("Animation_hb2o5"),
+"walk_wiz": SubResource("Animation_jinh4")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8mmt"]
+radius = 0.836562
+height = 1.86787
+
+[sub_resource type="Animation" id="Animation_xqmsl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00467474, 1.3689, -0.0738576)]
+}
+
+[sub_resource type="Animation" id="Animation_rnppl"]
+resource_name = "got_hit"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_1ocfx"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0.0436332), Vector3(0, 1.5708, 0.15708)]
+}
+
+[sub_resource type="Animation" id="Animation_6mqfc"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(0.168546, -1.5708, -0.0440113), Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(-0.169297, -1.5708, -0.0436332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-0.00467474, 1.3689, -0.0738576), Vector3(-0.00467474, 1.64925, -0.0738576), Vector3(-0.00467474, 1.3689, -0.0738576), Vector3(-0.00467474, 1.64925, -0.0738576)]
+}
+
+[sub_resource type="Animation" id="Animation_d6n5p"]
+resource_name = "walk_short"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.194398, 0), Vector3(0, 0, 0), Vector3(0, 0.194398, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(0.168546, -1.5708, -0.0440113), Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(-0.169297, -1.5708, -0.0436332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0652887, 0.3653, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-0.005, 0.88, -0.074), Vector3(-0.005, 1.151, -0.074), Vector3(-0.005, 0.88, -0.074), Vector3(-0.005, 1.151, -0.074)]
+}
+
+[sub_resource type="Animation" id="Animation_cnygn"]
+resource_name = "walk_tall"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.587, 0), Vector3(0, 0, 0), Vector3(0, 0.587, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0369969, 0.336997, 0.636997, 0.936997),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(0.168546, -1.5708, -0.0440113), Vector3(-1.18416e-16, -1.5708, -0.0440113), Vector3(-0.169297, -1.5708, -0.0436332)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0369969, 0.337325, 0.636997, 0.937981),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(-0.005, 1.724, -0.074), Vector3(-0.005, 2.2, -0.074), Vector3(-0.005, 1.724, -0.074), Vector3(-0.005, 2.2, -0.074)]
+}
+
+[sub_resource type="Animation" id="Animation_sqo3q"]
+resource_name = "walk_wiz"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/goblin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0.0698132), Vector3(0.169297, 1.5708, 0.0698132), Vector3(0, 1.5708, 0.0698132), Vector3(-0.169297, 1.5708, 0.0698132)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshContainer/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0652887, 0.365289, 0.665289, 0.965289),
+"transitions": PackedFloat32Array(0.5, 1.5, 0.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 1.369, 0), Vector3(0, 1.649, 0), Vector3(0, 1.369, 0), Vector3(0, 1.649, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynrd4"]
+_data = {
+"RESET": SubResource("Animation_xqmsl"),
+"got_hit": SubResource("Animation_rnppl"),
+"idle": SubResource("Animation_1ocfx"),
+"walk": SubResource("Animation_6mqfc"),
+"walk_short": SubResource("Animation_d6n5p"),
+"walk_tall": SubResource("Animation_cnygn"),
+"walk_wiz": SubResource("Animation_sqo3q")
+}
+
+[sub_resource type="Animation" id="Animation_t8b0b"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kjprw"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(1.5708, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyyj4"]
+_data = {
+"RESET": SubResource("Animation_t8b0b"),
+"die": SubResource("Animation_kjprw")
+}
+
 [node name="Player" type="CharacterBody3D"]
-collision_mask = 3
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_mask = 19
 script = ExtResource("1_r02ju")
+
+[node name="PointAt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8588)
+
+[node name="Arrow" parent="." instance=ExtResource("3_jlfk1")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, -1.9069)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.49958, 0)
@@ -31,8 +583,31 @@ shape = SubResource("CylinderShape3D_o4oon")
 [node name="Hand" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12831, -1.46803)
 
-[node name="Arrow" parent="." instance=ExtResource("3_jlfk1")]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, -1.9069)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_xxu2f")
+}
+
+[node name="GoblinDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoblinDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04817, 0)
+shape = SubResource("CapsuleShape3D_y8mmt")
+
+[node name="AnimationPlayerHIT" type="AnimationPlayer" parent="."]
+speed_scale = 1.25
+libraries = {
+"": SubResource("AnimationLibrary_ynrd4")
+}
+
+[node name="AnimationPlayerDIE" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oyyj4")
+}
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
+[connection signal="body_entered" from="GoblinDetector" to="." method="_on_goblin_detector_body_entered"]

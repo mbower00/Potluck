@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var action_complexity_reduction = 0
 @export var attack_duration_addition = 0
 
+@export var lives = 3
+
 var occupied_object = null
 var prev_occupied = null
 var focused_object = null
@@ -17,9 +19,13 @@ var action_pipe = []
 var may_move = true
 var may_rotate = true
 var is_targeting = false
+var is_moving = false
+var is_dead = false
 
 signal bottle_crafted
+signal lose_life
 signal potion_used(potion_color)
+signal died
 
 var action_sets = {
 	'craft_bottle': ['b','a'],
@@ -28,12 +34,12 @@ var action_sets = {
 	'red': ['b','x'], # Fire Attack
 	'orange': ['b','y'], # Beam Attack
 	# B Tier
-	'yellow': ['a', 'b', 'x', 'y'], # Area Attack
+	'yellow': ['b', 'x', 'y'], # Area Attack
 	# A Tier
-	'blue': ['a', 'a', 'b', 'x', 'x', 'y'], # Decrease Action Complexity
-	'green': ['a', 'b', 'b', 'x', 'y', 'y'], # Increse Movement Speed and Heal(?)
+	'blue': ['a', 'b', 'x', 'y'], # Decrease Action Complexity
+	'green': ['a', 'b', 'x', 'y'], # Increse Movement Speed and Heal(?)
 	# S  Tier
-	'purple': ['a', 'b', 'x', 'y', 'a', 'b', 'x', 'y'], # Increase Attack Duration
+	'purple': ['a', 'b', 'x', 'x', 'y'], # Increase Attack Duration
 }
 
 ########################### CONNECTIONS AND OVERRIDES ##########################
@@ -42,6 +48,12 @@ func _ready():
 	$Arrow.hide()
 
 func _physics_process(_delta):
+	if is_dead:
+		return
+	
+	if $GoblinDetector.has_overlapping_bodies():
+		handle_hit()
+	
 	var direction = Vector3.ZERO
 	var new_velocity = Vector3.ZERO
 	
@@ -55,7 +67,9 @@ func _physics_process(_delta):
 			prev_occupied = occupied_object
 			occupied_object = focused_object
 			if focused_object.is_item:
-				# TODO: player should drop item before holding a new one
+				if prev_occupied != null and prev_occupied.is_item:
+					# player should drop item before holding a new one
+					prev_occupied.unoccupy()
 				focused_object.occupy($Hand)
 			elif on_occupy == 'burn_action':
 				pass
@@ -72,6 +86,8 @@ func _physics_process(_delta):
 		elif action_pipe == [] and occupied_object != null:
 			occupied_object.unoccupy()
 			occupied_object = null
+			if focused_object != null:
+				handle_focus(focused_object)
 
 	if Input.is_action_just_pressed("x_%s" % joypad_num): #X
 		if len(action_pipe) > 0 and action_pipe[0] == 'x':
@@ -104,19 +120,41 @@ func _physics_process(_delta):
 		direction.x -= Input.get_action_strength("move_west_%s" % joypad_num)
 	if direction != Vector3.ZERO and may_rotate:
 		look_at(position + direction, Vector3.UP)
-	if may_move:
+	if direction != Vector3.ZERO and may_move:
+		if is_moving == false:
+			$AnimationPlayer.stop()
+			$AnimationPlayer.play("walk_wiz")
+		is_moving = true
+		var ani_speed_mod = (speed - 5) / 5
+		#direction = direction.normalized() used in squash the creeps 3D godot tutorial 
+		direction = direction.normalized()
+		if abs(direction.x) + abs(direction.z) < .7:
+			$AnimationPlayer.speed_scale = .75 + ani_speed_mod
+		else:
+			#print(1 + ani_speed_mod)
+			$AnimationPlayer.speed_scale = 1 + ani_speed_mod
 		new_velocity.x = direction.x * speed
 		new_velocity.z = direction.z * speed
 		velocity = new_velocity
 	else:
+		if is_moving == true:
+			$AnimationPlayer.stop()
+			$AnimationPlayer.speed_scale = 1
+			$AnimationPlayer.play("idle")
+		is_moving = false
 		velocity = Vector3(0,0,0)
 	move_and_slide()
 
+
 func _on_detector_body_entered(body):
+	if is_dead:
+		return
 	if !body.is_occupied and action_pipe == []:
 		handle_focus(body)
 
 func _on_detector_body_exited(body):
+	if is_dead:
+		return
 	if body == occupied_object:
 		unoccupy(body)
 		occupied_object = prev_occupied
@@ -182,7 +220,7 @@ func progress_pipe():
 
 func get_action_set(key, shuffle = false, difficulty = get_parent().difficulty_score):
 	var set = []
-	var repeats = 2 + difficulty
+	var repeats = 3
 	action_sets
 	for i in range(repeats):
 		set.append_array(action_sets[key])
@@ -257,6 +295,31 @@ func mix_potion_complete():
 
 ################################### HANDLERS ###################################
 
+func handle_hit():
+	print('hit')
+	if !$AnimationPlayerHIT.is_playing(): # Whether to be hit
+		print('hit and not animating')
+		if lives > 1:
+			print('nonfatal')
+			$AnimationPlayerHIT.play("got_hit")
+		lives -= 1
+		lose_life.emit()
+		if lives < 1:
+			print('death')
+			call_deferred('remove_from_group', 'players')
+			set_collision_layer_value(1, false)
+			# Die... :(
+			#queue_free()
+			if occupied_object != null:
+				unoccupy(occupied_object)
+			$Arrow.hide()
+			$ButtonIndicator.hide()
+			$AnimationPlayerDIE.play("die")
+			$AnimationPlayerHIT.stop()
+			$AnimationPlayer.stop()
+			is_dead = true
+			died.emit()
+
 func handle_focus(body):
 		if occupied_object != null:
 			# SOMETHING HELD
@@ -276,7 +339,7 @@ func handle_focus(body):
 				# GLASS BLOWING SET
 				'glass_blowing_set':
 					# BURN Focus
-					# TODO: breaking when you hit 'a' after dropping an item when burn was expected
+					# TODO: breaking (you can still craft w/out 'a' prompt) when you hit 'a' after dropping an item when burn was expected
 					focus(body, 'burn_action')
 				# TABLE
 				'table':
@@ -295,3 +358,5 @@ func handle_focus(body):
 				_:
 					if body.is_item:
 						focus(body)
+
+

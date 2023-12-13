@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://orange_spell.gd" id="1_gsc16"]
 [ext_resource type="Texture2D" uid="uid://mi2r3jp2rt52" path="res://art/asprite_palette.png" id="1_n7t04"]
 
+[sub_resource type="Animation" id="Animation_xovni"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_l523o"]
 resource_name = "spin"
 length = 0.4
@@ -19,9 +22,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_xovni"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d8swo"]
 _data = {
@@ -118,6 +118,8 @@ light_energy = 5.117
 
 [node name="Detector" type="Area3D" parent="Container"]
 transform = Transform3D(1, 6.6815e-22, 0, 6.6815e-22, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Container/Detector"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 5.11168)

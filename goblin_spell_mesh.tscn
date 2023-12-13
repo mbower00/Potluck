@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://1vi6swo51gh5"]
+
+[ext_resource type="PackedScene" uid="uid://crft0uf0mqwla" path="res://goblin_spell.glb" id="1_k1ofk"]
+
+[node name="goblin_spell" instance=ExtResource("1_k1ofk")]
